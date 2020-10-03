@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.una.Casa_Subasta.controllers;
 
 import io.swagger.annotations.Api;
@@ -19,31 +14,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.una.Casa_Subasta.dto.PujaDTO;
-import org.una.Casa_Subasta.entities.Lab2_Puja;
-import org.una.Casa_Subasta.services.IPujaService;
+import org.una.Casa_Subasta.dto.LoteDTO;
+import org.una.Casa_Subasta.dto.ProductoDTO;
+import org.una.Casa_Subasta.entities.Lab2_Lote;
+import org.una.Casa_Subasta.services.ILoteService;
 import org.una.Casa_Subasta.utils.MapperUtils;
 
 /**
  *
- * @author chris
+ * @author Sergio
  */
 @RestController
-@RequestMapping("/pujas") 
-@Api(tags = {"Puja"})
-public class PujaController {
-
+@RequestMapping("/lote") 
+@Api(tags = {"Lote"})
+public class LoteController {
+    
     @Autowired
-    private IPujaService pujaService;
-
+    private ILoteService loteService;
+    
     @GetMapping() 
     public @ResponseBody
     ResponseEntity<?> findAll() {
         try {
-            Optional<List<Lab2_Puja>> result = pujaService.findAll();
+            Optional<List<Lab2_Lote>> result = loteService.findAll();
             if (result.isPresent()) {
-                List<PujaDTO> pujaDTO = MapperUtils.DtoListFromEntityList(result.get(), PujaDTO.class);
-                return new ResponseEntity<>(pujaDTO, HttpStatus.OK);
+                List<LoteDTO> loteDTO = MapperUtils.DtoListFromEntityList(result.get(), LoteDTO.class);
+                return new ResponseEntity<>(loteDTO, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -56,10 +52,10 @@ public class PujaController {
     public ResponseEntity<?> findById(@PathVariable(value = "id") Long id) {
         try {
 
-            Optional<Lab2_Puja> pujaFound = pujaService.findById(id);
-            if (pujaFound.isPresent()) {
-                PujaDTO pujaDto = MapperUtils.DtoFromEntity(pujaFound.get(), PujaDTO.class);
-                return new ResponseEntity<>(pujaDto, HttpStatus.OK);
+            Optional<Lab2_Lote> loteFound = loteService.findById(id);
+            if (loteFound.isPresent()) {
+                LoteDTO loteDTO = MapperUtils.DtoFromEntity(loteFound.get(), LoteDTO.class);
+                return new ResponseEntity<>(loteDTO, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -71,14 +67,13 @@ public class PujaController {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/") 
     @ResponseBody
-    public ResponseEntity<?> create(@RequestBody Lab2_Puja puja) {
+    public ResponseEntity<?> create(@RequestBody Lab2_Lote lote) {
         try {
-            Lab2_Puja pujaCreated = pujaService.create(puja);
-            PujaDTO pujaDto = MapperUtils.DtoFromEntity(pujaCreated, PujaDTO.class);
-            return new ResponseEntity<>(pujaDto, HttpStatus.CREATED);
+            Lab2_Lote loteCreated = loteService.create(lote);
+            LoteDTO loteDTO = MapperUtils.DtoFromEntity(loteCreated, LoteDTO.class);
+            return new ResponseEntity<>(loteDTO, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 }

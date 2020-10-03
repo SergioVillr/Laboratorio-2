@@ -29,7 +29,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Lab2_Lotes implements Serializable{
+public class Lab2_Lote implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

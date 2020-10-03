@@ -54,11 +54,11 @@ public class Lab2_Puja implements Serializable {
     
     @ManyToOne 
     @JoinColumn(name="lab2_lotes_id")
-    private Lab2_Lotes lotesId;
+    private Lab2_Lote lotesId;
         
     @ManyToOne 
     @JoinColumn(name="lab2_clientes_id")
-    private Lab2_Lotes clientesId;
+    private Lab2_Lote clientesId;
     
     private static final long serialVersionUID = 1L;
 

@@ -5,6 +5,18 @@
  */
 package org.una.Casa_Subasta;
 
+import java.util.Collections;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
+import springfox.documentation.service.Tag;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 /**
  *
  * @author chris
@@ -23,16 +35,19 @@ public class SwaggerConfiguration {
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo())
-                .tags(new Tag("Seguridad", "Metodos de Seguridad"),
-                         new Tag("Usuarios", "Entidad de Usuarios")
+                .tags(
+                        new Tag("Lote", "Entidad de Lotes"),
+                        new Tag("Producto", "Entidad de Productos"),
+                        new Tag("Lab2_Cliente", "Entidad de Clientes"),
+                        new Tag("Puja", "Entidad de Pujas")
                 );
 
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "Trámites Municipales",
-                "Rest API sobre Trámites Municipales.",
+                "Casa de Subasta en Linea WebbVill",
+                "Rest API sobre subastas en linea.",
                 "Versión:2.1.0",
                 "https://google.com",
                 new Contact("UNA Sede Región Brunca", "https://srb.una.ac.cr/index.php/es/", "decanatosrb@una.cr"),

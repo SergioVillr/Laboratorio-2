@@ -9,9 +9,13 @@ import org.una.Casa_Subasta.entities.Lab2_Cliente;
  *
  * @author Sergio
  */
-public interface ClienteRepository extends JpaRepository<Lab2_Cliente, Long> {
+public interface IClienteRepository extends JpaRepository<Lab2_Cliente, Long> {
 
      public Optional<Lab2_Cliente> findById(Long id);
+     
+     public List<Lab2_Cliente> findByNombre(String nombre);
+     
+     public List<Lab2_Cliente> findByCorreoelectronico(String password);
 
     
     

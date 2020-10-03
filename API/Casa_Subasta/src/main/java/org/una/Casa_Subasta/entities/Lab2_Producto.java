@@ -49,7 +49,7 @@ public class Lab2_Producto implements Serializable {
     
     @ManyToOne 
     @JoinColumn(name="lab2_lotes_id")
-    private Lab2_Lotes lotesId;
+    private Lab2_Lote lotesId;
 
     @Column
     private boolean estado;

@@ -16,7 +16,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor 
 @ToString
-public class LotesDTO {
+public class LoteDTO {
  
     private Long id; 
     private String nombreCatalogo;   

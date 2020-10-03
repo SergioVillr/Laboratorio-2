@@ -16,5 +16,7 @@ public interface IClienteService {
     
     public Lab2_Cliente create(Lab2_Cliente cliente);
 
-    public Optional<Lab2_Cliente> update(Lab2_Cliente cliente, Long id);
+   // public Optional<Lab2_Cliente> update(Lab2_Cliente cliente, Long id);
+    
+    
 }
