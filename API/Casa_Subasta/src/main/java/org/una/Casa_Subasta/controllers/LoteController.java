@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.una.Casa_Subasta.dto.LoteDTO;
-import org.una.Casa_Subasta.dto.ProductoDTO;
 import org.una.Casa_Subasta.entities.Lab2_Lote;
 import org.una.Casa_Subasta.services.ILoteService;
 import org.una.Casa_Subasta.utils.MapperUtils;

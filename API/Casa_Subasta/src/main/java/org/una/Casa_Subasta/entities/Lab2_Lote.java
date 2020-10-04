@@ -24,7 +24,7 @@ import lombok.ToString;
  * @author Sergio
  */
 @Entity
-@Table(name = "lab2_cliente")
+@Table(name = "lab2_lote")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

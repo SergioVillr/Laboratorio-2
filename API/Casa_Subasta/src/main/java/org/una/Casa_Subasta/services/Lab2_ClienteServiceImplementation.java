@@ -5,15 +5,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.una.Casa_Subasta.entities.Lab2_Cliente;
-import org.una.Casa_Subasta.repositories.IClienteRepository;
+import org.una.Casa_Subasta.repositories.ILab2_ClienteRepository;
 
 /**
  *
  * @author Sergio
  */
-public class ClienteServiceImplementation implements IClienteService{
+public class Lab2_ClienteServiceImplementation implements ILab2_ClienteService{
     @Autowired
-    private IClienteRepository clienteRepository;
+    private ILab2_ClienteRepository clienteRepository;
     
     @Override
     @Transactional(readOnly = true)

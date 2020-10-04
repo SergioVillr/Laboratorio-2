@@ -8,11 +8,11 @@ import org.una.Casa_Subasta.entities.Lab2_Cliente;
  *
  * @author Sergio
  */
-public interface IClienteService {
-    
-    public Optional<Lab2_Cliente> findById(Long id);
+public interface ILab2_ClienteService {
     
     public Optional<List<Lab2_Cliente>> findAll();
+    
+    public Optional<Lab2_Cliente> findById(Long id);
     
     public Lab2_Cliente create(Lab2_Cliente cliente);
 

@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.una.Casa_Subasta.dto.ClienteDTO;
+import org.una.Casa_Subasta.dto.Lab_2ClienteDTO;
 import org.una.Casa_Subasta.entities.Lab2_Cliente;
-import org.una.Casa_Subasta.services.IClienteService;
+import org.una.Casa_Subasta.services.ILab2_ClienteService;
 import org.una.Casa_Subasta.utils.MapperUtils;
 
 /**
@@ -24,20 +24,20 @@ import org.una.Casa_Subasta.utils.MapperUtils;
  * @author Sergio
  */
 @RestController
-@RequestMapping("/lab2_clientes") 
+@RequestMapping("/lab2_cliente") 
 @Api(tags = {"Lab2_Cliente"})
 public class Lab2_ClienteController {
     
     @Autowired
-    private IClienteService clienteService;
+    private ILab2_ClienteService lab2_ClienteService;
     
     @GetMapping() 
     public @ResponseBody
     ResponseEntity<?> findAll() {
         try {
-            Optional<List<Lab2_Cliente>> result = clienteService.findAll();
+            Optional<List<Lab2_Cliente>> result = lab2_ClienteService.findAll();
             if (result.isPresent()) {
-                List<ClienteDTO> clienteDTO = MapperUtils.DtoListFromEntityList(result.get(), ClienteDTO.class);
+                List<Lab_2ClienteDTO> clienteDTO = MapperUtils.DtoListFromEntityList(result.get(), Lab_2ClienteDTO.class);
                 return new ResponseEntity<>(clienteDTO, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -51,9 +51,9 @@ public class Lab2_ClienteController {
     public ResponseEntity<?> findById(@PathVariable(value = "id") Long id) {
         try {
 
-            Optional<Lab2_Cliente> clienteFound = clienteService.findById(id);
+            Optional<Lab2_Cliente> clienteFound = lab2_ClienteService.findById(id);
             if (clienteFound.isPresent()) {
-                ClienteDTO clienteDTO = MapperUtils.DtoFromEntity(clienteFound.get(), ClienteDTO.class);
+                Lab_2ClienteDTO clienteDTO = MapperUtils.DtoFromEntity(clienteFound.get(), Lab_2ClienteDTO.class);
                 return new ResponseEntity<>(clienteDTO, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -68,8 +68,8 @@ public class Lab2_ClienteController {
     @ResponseBody
     public ResponseEntity<?> create(@RequestBody Lab2_Cliente cliente) {
         try {
-            Lab2_Cliente clienteCreated = clienteService.create(cliente);
-            ClienteDTO clienteDTO = MapperUtils.DtoFromEntity(clienteCreated, ClienteDTO.class);
+            Lab2_Cliente clienteCreated = lab2_ClienteService.create(cliente);
+            Lab_2ClienteDTO clienteDTO = MapperUtils.DtoFromEntity(clienteCreated, Lab_2ClienteDTO.class);
             return new ResponseEntity<>(clienteDTO, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);

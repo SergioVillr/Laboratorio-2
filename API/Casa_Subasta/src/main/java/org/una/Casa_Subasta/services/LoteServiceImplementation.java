@@ -30,8 +30,8 @@ public class LoteServiceImplementation implements ILoteService{
     
     @Override
     @Transactional
-    public Lab2_Lote create(Lab2_Lote productos) {
-        return lotesRepository.save(productos);
+    public Lab2_Lote create(Lab2_Lote lote) {
+        return lotesRepository.save(lote);
     }
     
    /*@Override
